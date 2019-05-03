@@ -1,0 +1,21 @@
+.wrap {
+  margin-top: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.btn_effect {
+  position: absolute;
+  top: 100px;
+  left: 10px;
+}
+
+.dust {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
