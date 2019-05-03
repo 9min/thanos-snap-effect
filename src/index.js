@@ -116,42 +116,13 @@ const convertElToImg = () => {
           800 + 110 * index
         );
       }, 70 * index);
-      //remove the canvas from DOM tree when faded
+
       $(this)
         .delay(70 * index)
         .fadeOut(110 * index + 800, "easeInQuint", () => {
           $(this).remove();
         });
     });
-
-    /*
-    //create canvas for each imageData and append to target element
-    for (let i = 0; i < canvasCount; i++) {
-      let c = newCanvasFromImageData(imageDataArray[i], canvas.width, canvas.height);
-      c.classList.add("dust");
-      $("body").append(c);
-    }
-    //clear all children except the canvas
-    $(".content").children().not(".dust").fadeOut(3500);
-    //apply animation
-    $(".dust").each( function(index){
-      animateBlur($(this),0.8,800);
-      setTimeout(() => {
-        animateTransform($(this),100,-100,chance.integer({ min: -15, max: 15 }),800+(110*index));
-      }, 70*index); 
-      //remove the canvas from DOM tree when faded
-      $(this).delay(70*index).fadeOut((110*index)+800,"easeInQuint",()=> {$( this ).remove();});
-    });
-
-    for(let i=0;i<canvasCount;i++)
-      {
-        let arr = new Uint8ClampedArray(imageData.data);
-        for (let j = 0; j < arr.length; j++) {
-            arr[j] = 0;
-        }
-        imageDataArray.push(arr);
-
-    */
   });
 };
 
