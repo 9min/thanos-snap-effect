@@ -41,7 +41,7 @@ const animateBlur = (elem, radius, duration) => {
     {
       duration: duration,
       easing: "easeOutQuad",
-      step: function(now) {
+      step: (now) => {
         elem.css({
           filter: "blur(" + now + "px)"
         });
@@ -57,18 +57,38 @@ const animateTransform = (elem, sx, sy, angle, duration) => {
     {
       duration: duration,
       easing: "easeInQuad",
-      step: function(now, fx) {
-        if (fx.prop == "x") tx = now;
-        else if (fx.prop == "y") ty = now;
-        else if (fx.prop == "deg") td = now;
+      step: (now, { prop }) => {
+        if (prop === "x") tx = now;
+        if (prop === "y") ty = now;
+        if (prop === "deg") td = now;
+
         elem.css({
-          transform:
-            "rotate(" + td + "deg)" + "translate(" + tx + "px," + ty + "px)"
+          transform: `rotate(${td}deg) translate(${tx}px, ${ty}px)`
         });
       }
     }
   );
 };
+
+const appendCanvas = (canvas) => {
+  for (let i = 0; i < canvasCount; i++) {
+    let convertCanvas = newCanvasFromImageData(
+      imageDataArray[i],
+      canvas.width,
+      canvas.height
+    );
+    convertCanvas.classList.add("dust");
+
+    $("body").append(convertCanvas);
+  }
+}
+
+const hideOriginalEl = () => {
+  $("#app")
+    .children()
+    .not(".dust")
+    .fadeOut(3500);
+}
 
 const convertElToImg = () => {
   html2canvas(targetEl).then(canvas => {
@@ -89,21 +109,9 @@ const convertElToImg = () => {
       a[i + 3] = pixelArr[i + 3];
     }
 
-    for (let i = 0; i < canvasCount; i++) {
-      let c = newCanvasFromImageData(
-        imageDataArray[i],
-        canvas.width,
-        canvas.height
-      );
-      c.classList.add("dust");
+    appendCanvas(canvas);
 
-      $("body").append(c);
-    }
-
-    $("#app")
-      .children()
-      .not(".dust")
-      .fadeOut(3500);
+    hideOriginalEl();
 
     $(".dust").each(function(index) {
       animateBlur($(this), 0.8, 800);
