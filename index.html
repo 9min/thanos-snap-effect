@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Parcel Sandbox</title>
+    <title>te</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/reset.css" />
@@ -10,13 +10,18 @@
     <script src="src/lib/jquery-ui.min.js"></script>
     <script src="src/lib/html2canvas.min.js"></script>
     <script src="src/lib/chance.min.js"></script>
+    <script src="src/thanos-effect.js"></script>
   </head>
-
   <body>
     <div id="app" class="wrap">
-      <h1 class="title">Thanos Effect!</h1>
+      <h1 class="title">Thanos Effect</h1>
     </div>
-    <button type="button" id="btnEffect" class="btn_effect">Click</button>
-    <script src="src/index.js"></script>
+    <script>
+      const thanosEffect = new ThanosEffect({
+        target: document.querySelector('#app')
+      });
+
+      setTimeout(() => thanosEffect.start(), 1000);
+    </script>
   </body>
 </html>
