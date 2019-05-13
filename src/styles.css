@@ -14,7 +14,7 @@
   text-align: center;
 }
 
-.choose_file > input[type="file"] {
+.choose_wrap > input[type="file"] {
   position: absolute;
   top: 0;
   left: 0;

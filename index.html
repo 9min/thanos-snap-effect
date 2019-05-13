@@ -13,7 +13,7 @@
     <script src="src/thanos-effect.js"></script>
   </head>
   <body>
-    <div id="chooseWrap" class="choose_wrap">
+    <div class="choose_wrap">
       <span>Choose Image</span>
       <input id="inputFile" type="file" accept="image/*" />
     </div>
@@ -23,7 +23,7 @@
       const inputElement = document.querySelector('#inputFile');
       const onLoad = ({ target: { result }}) => {
         targetElement.innerHTML = `<img style="max-width:100%" src="${result}" />`;
-        document.getElementById('chooseWrap').style.display = 'none';
+        document.getElementsByClassName('choose_wrap').style.display = 'none';
         new ThanosEffect({ target: targetElement });
       }
       inputElement.addEventListener('change', (({ target: { files } }) => {
