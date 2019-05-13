@@ -23,7 +23,7 @@
       const inputElement = document.querySelector('#inputFile');
       const onLoad = ({ target: { result }}) => {
         targetElement.innerHTML = `<img style="max-width:100%" src="${result}" />`;
-        document.getElementsByClassName('choose_wrap').style.display = 'none';
+        document.getElementsByClassName('choose_wrap')[0].style.display = 'none';
         new ThanosEffect({ target: targetElement });
       }
       inputElement.addEventListener('change', (({ target: { files } }) => {
