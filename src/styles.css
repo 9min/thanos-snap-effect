@@ -2,7 +2,7 @@
   position: absolute;
 }
 
-.choose_file{
+.choose_wrap {
   position: relative;
   display: inline-block;    
   border-radius: 8px;
