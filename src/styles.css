@@ -1,9 +1,26 @@
-.wrap {
-  display: inline-block;
-  margin-top: 4px;
+.effect-wrap {
+  position: absolute;
 }
 
-.title {
-  font-size: 70px;
-  font-weight: bold;
+.choose_file{
+  position: relative;
+  display: inline-block;    
+  border-radius: 8px;
+  border: #ebebeb solid 1px;
+  padding: 4px 6px;
+  color: #7f7f7f;
+  margin-top: 2px;
+  background: white;
+  text-align: center;
+}
+
+.choose_file > input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-appearance: none; 
+  user-select: none;
 }

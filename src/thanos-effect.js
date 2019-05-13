@@ -29,8 +29,8 @@ class ThanosEffect {
   freezeState(options) {
     const {
       target,
-      count = 35,
-      time = 3500,
+      count = 20,
+      time = 2000,
     } = options;
 
     Object.assign(this.state, { target, count, time });
@@ -126,6 +126,9 @@ class ThanosEffect {
 
     // 타겟 엘리먼트에 이펙트 캔버스들 추가
     this.appendEffectCanvas(canvas);
+
+    // 이펙트 효과 시작
+    this.start();
   }
 
   hideOriginalElements() {
@@ -174,7 +177,7 @@ class ThanosEffect {
       const $this = $(this);
       const x = 100;
       const y = -100;
-      const angle = chance.integer({ min: -15, max: 15 });
+      const angle = chance.integer({ min: -10, max: 10 });
       const duration = 800 + (110 * index);
       const delay = 70 * index;
   
@@ -189,7 +192,6 @@ class ThanosEffect {
   start() {
     // 기존에 있었던 엘리먼트들은 사라지게
     this.hideOriginalElements();
-
     // 이펙트 적용
     this.effect();
   }
