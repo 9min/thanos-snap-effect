@@ -79,11 +79,10 @@ class ThanosEffect {
 
   getNewCanvasFromImageData(datas, w, h) {
     const canvas = document.createElement('canvas');
-  
+    const tempCtx = canvas.getContext('2d');
+
     canvas.width = w;
     canvas.height = h;
-  
-    const tempCtx = canvas.getContext('2d');
   
     tempCtx.putImageData(new ImageData(datas, w, h), 0, 0);
   
@@ -92,6 +91,7 @@ class ThanosEffect {
 
   appendEffectCanvas(canvas) {
     const { dataArray, target, count, effectClass } = this.state;
+    const ratio = window.devicePixelRatio || 1;
 
     for (let i = 0; i < count; i++) {
       const newCanvas = this.getNewCanvasFromImageData(
@@ -100,11 +100,14 @@ class ThanosEffect {
         canvas.height
       );
 
+      newCanvas.getContext('2d').scale(ratio, ratio);
       newCanvas.classList.add(effectClass.replace(/\./g, ''));
       newCanvas.style = `
         position: absolute;
         top: 0;
         left: 0;
+        width: ${newCanvas.width / ratio}px;
+        height: ${newCanvas.height / ratio}px;
       `;
   
       target.appendChild(newCanvas);
