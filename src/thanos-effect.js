@@ -29,8 +29,8 @@ class ThanosEffect {
   freezeState(options) {
     const {
       target,
-      count = 20,
-      time = 2000,
+      count = 10,
+      time = 1000,
     } = options;
 
     Object.assign(this.state, { target, count, time });
