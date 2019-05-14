@@ -180,11 +180,11 @@ class ThanosEffect {
       const $this = $(this);
       const x = 100;
       const y = -100;
-      const angle = chance.integer({ min: -10, max: 10 });
-      const duration = 800 + (110 * index);
-      const delay = 70 * index;
+      const angle = chance.integer({ min: -15, max: 15 });
+      const duration = 1000 + (500 * index);
+      const delay = 100 * index;
   
-      animateBlur($this, 0.8, 800);
+      animateBlur($this, 1, duration);
   
       setTimeout(() => animateTransform($this, x, y, angle, duration), delay);
   
